@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech</title>
+    <style>
+    h1
+        {
+            color: rgba(144, 245, 29, 0.836);
+            font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;  
+            
+        }
+        h4{
+            color: rgb(228, 13, 156);
+            font-size: 20px;
+            
+            font-family:Arial, Helvetica, sans-serif
+        }
+        #car
+        {
+         width: 600px;;
+         height: 30px;
+         background-color:rgb(207, 211, 212);
+        }
+        p
+        {
+            color: rgb(229, 250, 40);
+            
+        }
+        #volume , #rate
+        {
+            color: rgb(241, 83, 20);
+        }
+        #sdf
+        {
+            color: white;
+        }
+        .btn, .pause ,.can, .res
+        {
+            color: black;
+            padding: 8px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-decoration: none;
+        }
+        .btn
+        {
+            background-color: green;
+        }
+        .pause
+        {
+            background-color: rgb(221, 197, 58);
+        }
+        .can
+        {
+            background-color: rgb(13, 188, 241);
+        }
+        .res
+        {
+            background-color: rgb(252, 9, 9);
+        }
+        a:hover
+        {
+        color: white;
+        }
+        body
+        {
+            background-image: url(textToSpeechImage.png);
+            background-size: cover;
+            background-position: center;
+            
+            font-family: sans-serif;
+        }
+        .menu-bar
+        {
+            background: rgb(72, 99, 41);
+            text-align: center;
+        }
+        .menu-bar ul
+        {
+            display: inline-flex;
+            list-style: none;
+            color: rgb(8, 0, 0);
+        }
+        .menu-bar ul li
+        {
+            width: 120px;
+            margin: 15px;
+            padding: 15px;
+        }
+        .menu-bar ul li a
+        {
+            text-decoration: none;
+            color: black;
+        }
+        /* a:visited */
+        /* { */
+            /* background-color: thistle; */
+        /* } */
+    </style>
+</head>
+<body>
+    <div class="menu-bar" >
+        <ul>
+            <li class="active"><button onclick="Home()">Home</button></li>
+            <li><button onclick="window.location.href = 'SignIn.html';">sign in</button></li>
+            <li><button onclick="window.location.href = 'SignUp.html';">sign up</button></li>
+            <li><button onclick="Contact()">Contact</button></li>
+            <li><button onclick="window.location.href = 'Aboutus.html';">About us</button></li>
+        </ul>
+    </div>
+    <h1>Say It</h1>
+    <h4>Select Voice</h4>
+    <select id='voiceList' >
+        <option>Jessica's American Pronunciation</option>
+        <option>Jessica's South Korean Pronunciation</option>
+        <option>Jessica's Indian Pronunciation</option>
+    </select> <br>
+    
+    <div class="abc">
+<p>Volume</p>
+<input type="range" min="0" max="1" value="0" step="0.1" id="volume">
+</div>
+<div>
+    <p>Rate</p>
+    <input type="range" min="0" max="1" value="0" step="0.1" id="rate">
+</div>
+<div>
+    <p>Pitch</p>
+    <input type="range" min="0" max="1" value="0" step="0.1" id="pitch">
+</div>
+<div>
+    <br>
+<textarea id="sdf" cols="80" rows="10" placeholder="Type Here"></textarea>
+</div>
+<br>
+<!-- <a href="http://gmail.com" class="btn" >Start</a>  -->
+<!-- <a href="http://gmail.com" class="pause" >Pause</a>  -->
+<!-- <a href="http://gmail.com" class="res" >Resume</a>  -->
+<!-- <a href="http://gmail.com" class="can" >Cancel</a>  -->
+<button type="button" onclick="texttoaudio()" class="btn">Start</button>
+ <button class="pause">Pause</button> 
+ <button class="res">Resume</button> 
+ <button class="can">Cancel</button>
+ <script>
+    function texttoaudio()
+    {
+        let msg=document.getElementById("sdf").value;
+ let speech = new SpeechSynthesisUtterance();
+
+speech.lang = "en-US";
+speech.text = msg;
+speech.volume = 1;
+speech.rate = 1;
+speech.pitch = 1;                
+
+window.speechSynthesis.speak(speech);
+
+    }
+    function Contact()
+    {
+    document.write("Accha Project Dekhne aaye ho"+"<br>");
+    document.write("hehehehehehehehe");
+    }
+    function Home()
+    {
+        document.write("Namaste Uncle/Aunty");
+    }
+</script>
+</body>
+</html>
